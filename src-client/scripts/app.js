@@ -1,6 +1,6 @@
 import Backbone from 'backbone';
 import ReactDOM from 'react-dom'
-import React from 'react'
+import React from 'rex`act'
 import {HomeView} from './views/view-home.js'
 import {ShoutCollection} from './models/model-shout.js'
 
