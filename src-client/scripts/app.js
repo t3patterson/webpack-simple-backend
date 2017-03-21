@@ -1,29 +1,19 @@
 import Backbone from 'backbone';
 import ReactDOM from 'react-dom'
-import React from 'rex`act'
-import {HomeView} from './views/view-home.js'
-import {ShoutCollection} from './models/model-shout.js'
+import React from 'react'
 
-
-const AppRouter = Backbone.Router.extend({
-	initialize: function(){
-		Backbone.history.start()
-	},
-	
-	routes: {
-		'' : 'showHome'
-	},
-	
-	showHome: function(){
-		ReactDOM.render(<HomeView />, document.querySelector('#app-container'))
+let SimpleComponent = React.createClass({
+	render: function(){
+		return <div style={{textAlign: 'center'}}>
+			<h2 style={{color: 'navy', fontFamily:'Helvetica'}}>
+					Cheer up frowny face<br/>
+			</h2>
+			<small>The build is working</small>
+		</div>
 	}
-	
 })
 
-new AppRouter()
+ReactDOM.render(<SimpleComponent/>, document.querySelector('#app-container'))
 
-// [
-// 	{from: 'Thomas', msg: 'sail away', imgLink: 'https://unsplash.it/900/600?image=211'},
-//  	{from: 'Shana', msg: 'stockholm syndrome', imgLink: 'https://unsplash.it/900/600?image=288'},
-//  	{from: 'Jess', msg: 'i love newyork i hate newyork i love newyork', imgLink: 'https://unsplash.it/900/600?image=299'}
-// ]
+
+

@@ -27,19 +27,6 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-//configure webpack
-if( process.env.NODE_ENV === 'development' ){
-	const webpack = require('webpack');
-	const webpackMiddleware = require('webpack-dev-middleware');
-	const webpackConfig = require('./webpack.config.js');
-	const webpackCompiler = webpack(webpackConfig);
-
-	app.use(webpackMiddleware(webpackCompiler, {
-	   noInfo: true,
-	   publicPath: webpackConfig.output.publicPath
-	}));
-}
-
 
 
 
