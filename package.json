@@ -4,8 +4,8 @@
   "description": "starter kit for webpack-es6",
   "main": "app.js",
   "scripts": {
-    "init-project" : "npm-run-all remove-origin set-project-name install",
-    "remove-origin" : "git && git remote remove origin",
+    "init-project" : "npm run remove-origin && npm run set-project-name && install",
+    "remove-origin" : "git remote remove origin || true",
     "start": "node --use_strict server.js",
     "go": "npm-run-all --parallel webpack-watcher dev-server",
     "dev-server": "NODE_ENV=development nodemon server.js --watch src-server --watch server.js",
