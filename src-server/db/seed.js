@@ -20,14 +20,18 @@ let dataSet = [
 
 console.log('connecting to db.....', PROJECT_NAME)
 connectToDB(PROJECT_NAME, (err, result)=>{
-	dataSet.forEach((dataRecord)=>{
-		//   SEED ACTION ON EACH RECORD HERE
-		// 	dataRecord.sold = false 
+  SomeModel.remove({}, () => {
+    dataSet.forEach((dataRecord) => {
+  		//   SEED ACTION ON EACH RECORD HERE
+  		// 	dataRecord.sold = false 
 
       let record = new SomeModel(dataRecord)
-		record.save((err, savedRecord)=>{
-			if (err) console.log(err)
-			console.log('saved: ' + savedRecord._id )
-		 }) 
-	})
+  		record.save((err, savedRecord) => {
+  			if (err) console.log(err)
+  			console.log('saved: ' + savedRecord._id )
+        if(++savedRecordCount === dataSet.length) process.exit()
+  		 }) 
+  	})
+  })
+	
 })
