@@ -1,20 +1,20 @@
 //IMPORTS
 //import webpack + webpack middleware;
-global.chalk = require('chalk')
-global.PROJECT_NAME = require('./src-server/config/projectName.js')
+const chalk = require('chalk')
+const PROJECT_NAME = require('./config/projectName.js')
 
-if(typeof PROJECT_NAME !== 'string' ){ 
-	require('./src-server/cli/setProjectName.js')
-	throw new Error(`\n${chalk.bgRed.bold('There must be a project name exported from :')} ${chalk.grey.bold('./src-server/config/projectName.js')} \n ${chalk.bgWhite.black(' you must execute: ')} ${chalk.cyan.bold('npm run set-project-name')}` ) 
+if(typeof PROJECT_NAME !== 'string' ){
+	require('./src/cli/setProjectName.js')
+	throw new Error(`\n${chalk.bgRed.bold('There must be a project name exported from :')} ${chalk.grey.bold('./src/config/projectName.js')} \n ${chalk.bgWhite.black(' you must execute: ')} ${chalk.cyan.bold('npm run set-project-name')}` )
 }
 
 const	bodyParser = require('body-parser')
 const express = require('express') //import express web server
-const renderFile = require('ejs').renderFile //import view templating engine 
-const connectToDB = require('./src-server/db/db-connect.js') //connect to db
+const renderFile = require('ejs').renderFile //import view templating engine
+const connectToDB = require('./src/db/db-connect.js') //connect to db
 
-const indexRouter = require('./src-server/routes/indexRouter.js')
-const apiRouter = require('./src-server/routes/apiRouter.js')
+const indexRouter = require('./src/routes/indexRouter.js')
+const apiRouter = require('./src/routes/apiRouter.js')
 
 
 // =========
@@ -37,9 +37,9 @@ app.set('port', PORT)
 
 //CONFIGURING TEMPLATING ENGINE FOR .HTML
 //-----------------------
-app.set('views', './dist');
-app.engine('html', renderFile)
-app.set('view engine', 'html');
+app.set('views', './src/views');
+app.engine('ejs', renderFile)
+app.set('view engine', 'ejs');
 
 // CONFIGURING STATIC FILES  (js, css, images)
 // ------------------------------

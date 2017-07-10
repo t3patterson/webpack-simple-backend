@@ -3,7 +3,7 @@ const chalk = require('chalk');
 const fs = require('fs')
 prompt.message = ""
 prompt.delimiter = chalk.cyan(" >")
-let writeDestination = 	`${__dirname}/../config/projectName.js`
+let writeDestination = 	`${__dirname}/../../config/projectName.js`
 
 let schema = [{
   name: 'projectName',
@@ -26,8 +26,8 @@ prompt.get(schema, function (err, result) {
  console.log(` writing to ${chalk.grey(writeDestination)}`);
 
  fs.writeFileSync(
-	 writeDestination, 
+	 writeDestination,
 	`module.exports = '${result.projectName}'`,
 	'utf-8'
  )
-});	
+});

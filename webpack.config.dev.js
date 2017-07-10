@@ -5,13 +5,13 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   devtool : 'inline-source-map',
-  entry:   { filename: './src-client/index.js' },
+  entry:   { filename: './src/clientApp/index.js' },
   output : { filename: './js/bundle.js', path: `${__dirname}/dist/` },
   context : `${__dirname}` ,
   module: {
     loaders: [
-		 { 
-          test: /\.js$/,
+		 {
+       test: /\.js$/,
 			 exclude: /node_modules/,
 			 loader: 'babel-loader',
           query: {
@@ -25,7 +25,7 @@ module.exports = {
 		 },
 		 {
 			 test: /\.(jpe?g|png|gif|svg)$/i,
-			 loader: 'file-loader?name=[name].[ext]&outputPath=images/&publicPath=../images/&context=./src-client/images'
+			 loader: 'file-loader?name=[name].[ext]&outputPath=images/&publicPath=../images/&context=./src/clientApp/images'
 		 }
 	 ]
   },
@@ -36,9 +36,7 @@ module.exports = {
 	  }),
 
 	  new CopyWebpackPlugin([
-	     {from : 'src-client/images', to: 'images'}
+	     {from : 'src/clientApp/images', to: 'images'}
 	  ]),
-	 
-     //env plugin -- css
   ]
 }

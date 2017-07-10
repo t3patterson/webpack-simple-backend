@@ -8,12 +8,9 @@ let SimpleComponent = React.createClass({
 			<h2 style={{color: 'navy', fontFamily:'Helvetica'}}>
 					Cheer up frowny face<br/>
 			</h2>
-			<small>The build is working</small>
+			<small>Neat! GREAT!@</small>
 		</div>
 	}
 })
 
 ReactDOM.render(<SimpleComponent/>, document.querySelector('#app-container'))
-
-
-
