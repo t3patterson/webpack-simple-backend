@@ -25,7 +25,7 @@ module.exports = {
 		 },
 		 {
 			  test: /\.(jpe?g|png|gif|svg)$/i,
-			  loader: 'file-loader?name=[name].[ext]&outputPath=images/&publicPath=../images/&context=./src/clientApp/images'
+			  loader: 'file-loader?name=[name].[ext]&emitFile=false&publicPath=../images/&context=./src/clientApp/images'
 		 }
 	 ]
   },
@@ -43,7 +43,7 @@ module.exports = {
 	  }),
 
 	  new CopyWebpackPlugin([
-	     {from : 'src-client/images', to: 'images'}
+	     {from : 'src/clientApp/images', to: 'images'}
 	  ]),
 
      //env plugin -- css
