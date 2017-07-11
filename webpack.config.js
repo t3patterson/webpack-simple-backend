@@ -2,6 +2,8 @@ const webpack = require('webpack')
 const nodeEnv = process.env.NODE_ENV || 'production'
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const cssnano = require('cssnano');
 
 module.exports = {
   devtool : 'source-map',
@@ -47,6 +49,11 @@ module.exports = {
 	  ]),
 
      //env plugin -- css
-     new ExtractTextPlugin({filename: './css/styles.css', allChunks: true})
+    new ExtractTextPlugin({filename: './css/styles.min.css', allChunks: true}),
+    new OptimizeCssAssetsPlugin({
+      cssProcessor: cssnano,
+      cssProcessorOptions: { discardComments: {removeAll: true } },
+      canPrint: true
+    })
   ]
 }
